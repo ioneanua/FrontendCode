@@ -35,12 +35,14 @@ var employeesList = [
 ];
 
 function showList() {
-    var myTable = '<table border="2" class="table table-bordered" ><tr><th>First Name</th><th>Last Name</th><th>Phone</th><th>Salary</th></tr>';
+    var myTable = '<table border="2" class="table table-bordered" ><tr><th>First Name</th><th>Last Name</th><th>Phone</th><th>Salary</th><th>Vizualizare</th><th>Stergere</th></tr>';
     for(var i in employeesList) {
         myTable += '<tr><td>'+employeesList[i].firstName+'</td><td>'+
             employeesList[i].lastName+'</td><td>'+
             employeesList[i].phone+'</td><td>'+
-            employeesList[i].salary+'</td></tr>';
+            employeesList[i].salary+'</td>'+
+            '<td><button onclick="vizualizare('+i+')">Vizualizare</button></td>'+
+            '<td><button onclick="stergere()">Stergere</button></td></tr>';
     }
     myTable += '</table>';
     var container = document.getElementById('listcontainer');
@@ -88,4 +90,12 @@ function sumTotal(){
 function deleteLastEmployee() {
     employeesList.splice(employeesList.length - 1, 1);
     showList()
+}
+
+function vizualizare(i){
+    window.alert(employeesList[i].firstName+ " " + employeesList[i].lastName + " " + employeesList[i].phone + " " + employeesList[i].salary);
+}
+
+function stergere(){
+
 }

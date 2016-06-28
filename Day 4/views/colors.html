@@ -1,0 +1,45 @@
+<label ng-cell-text="Color">
+    <select ng-change="changeColor()" ng-options="color as color.text for color in colors track by color.text" ng-model="text"></select>
+</label>
+
+<label ng-cell-text="Type">
+    <select ng-model="Type" ng-options="color.text group by color.type for color in colors"></select>
+</label>
+
+<span ng-class="Type.class">Search:</span>
+
+<input type="text" ng-model="input.text"/>
+
+<div ng-repeat="text in colors ">
+    <span>{{text.text}}</span>
+</div>
+
+<div>
+<table class="table table-striped">
+    <tr>
+        <th>Text</th>
+        <th>Type</th>
+        <th>Class</th>
+    </tr>
+    <tr ng-repeat="color in colors | orderBy : ' text '">
+        <td>{{color.text}}</td>
+        <td>{{color.type}}</td>
+        <td>{{color.class}}</td>
+    </tr>
+
+
+</table>
+</div>
+<br>
+
+<table class="table table-hover">
+    <tr ng-repeat="color in colors | filter : input">
+        <td>{{color.text}}</td>
+    </tr>
+
+</table>
+
+
+</br>
+
+
